@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date Created by 2018/4/20 17:54
  */
 @SpringBootApplication
-public class KafkaApplication {
+public class CommonApplication {
     public static void main(String[] args) {
-        SpringApplication.run(KafkaApplication.class, args);
+        SpringApplication.run(CommonApplication.class, args);
     }
 }

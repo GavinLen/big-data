@@ -47,7 +47,6 @@ public class ConsumerTest {
                 // print the offset,key and value for the consumer records.
                 System.out.printf("offset = %d, key = %s, value = %s\n", record.offset(), record.key(), record.value());
             }
-//            return;
         }
     }
 

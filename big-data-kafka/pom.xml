@@ -16,6 +16,7 @@
         <module>big-data-kafka-common</module>
         <module>big-data-kafka-producer</module>
         <module>big-data-kafka-consumer</module>
+        <module>big-data-kafka-use</module>
     </modules>
 
     <parent>

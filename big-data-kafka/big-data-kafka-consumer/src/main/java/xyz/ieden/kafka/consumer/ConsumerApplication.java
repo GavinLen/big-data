@@ -1,4 +1,4 @@
-package xyz.ieden.consumer;
+package xyz.ieden.kafka.consumer;
 
 /**
  * @author ThinkPad

@@ -1,29 +1,40 @@
-package xyz.ieden.consumer.group;
+package xyz.ieden.kafka.consumer;
 
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Properties;
 
 /**
- * Created by Gavin on 2018.04.23.
+ * @author ThinkPad
+ * @date Created by 2018/4/24 16:23
  */
-public class GroupConsumerTest {
+public class ConsumerByGroup {
 
-    public void ConsumerRecords() {
-        String bootstrapServers = "192.168.80.136:9092";
-        String groupId = "page_visits";
-        Consumer<String, String> consumer = createConsumerByAutoCommit(bootstrapServers, groupId);
-        consumer.subscribe(Arrays.asList("foo", "bar"));
-        while (true)
+    private static final String BOOTSTRAP_SERVER = "192.168.80.136:9092";
+    private static final String GROUP_ID = "log";
+    private static final Boolean AUTO_COMMIT = true;
 
-        {
+
+
+    public void handle() {
+
+        Consumer<String, String> consumer = createConsumerByAutoCommit(BOOTSTRAP_SERVER, GROUP_ID);
+
+        consumer.subscribe(Collections.singletonList("page_visits"));
+
+        System.out.println("Subscribed to topic " + "page_visits");
+
+        while (true) {
             ConsumerRecords<String, String> records = consumer.poll(100);
-            for (ConsumerRecord<String, String> record : records)
-                System.out.printf("offset = %d, key = %s, value = %s", record.offset(), record.key(), record.value());
+            for (ConsumerRecord<String, String> record : records) {
+
+                // print the offset,key and value for the consumer records.
+                System.out.printf("offset = %d, key = %s, value = %s\n", record.offset(), record.key(), record.value());
+            }
         }
     }
 

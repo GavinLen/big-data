@@ -41,6 +41,10 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional><!-- 若不设置则热部署不能起效 -->
         </dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>

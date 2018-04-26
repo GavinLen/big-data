@@ -15,7 +15,7 @@ public class ProducerTest {
 
     @Test
     public void testHelloWord() {
-        long events = 5;
+        long events = 500;
         Random rnd = new Random();
 
         Properties props = new Properties();
@@ -44,7 +44,7 @@ public class ProducerTest {
             long runtime = new Date().getTime();
             String ip = "192.168.2." + rnd.nextInt(255);
             String msg = runtime + ",www.example.com," + ip;
-            ProducerRecord<String, String> data = new ProducerRecord<>("page_visits", ip, msg);
+            ProducerRecord<String, String> data = new ProducerRecord<>("test_20180426", ip, msg);
             producer.send(data, (metadata, e) -> {
                 if (e != null) {
                     e.printStackTrace();

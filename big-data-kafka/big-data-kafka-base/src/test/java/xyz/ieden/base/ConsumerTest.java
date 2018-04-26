@@ -36,9 +36,9 @@ public class ConsumerTest {
 
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
 
-        consumer.subscribe(Collections.singletonList("page_visits"));
+        consumer.subscribe(Collections.singletonList("test_20180426"));
 
-        System.out.println("Subscribed to topic " + "page_visits");
+        System.out.println("Subscribed to topic " + "test_20180426");
 
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(100);

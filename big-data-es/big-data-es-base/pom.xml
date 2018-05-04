@@ -11,5 +11,57 @@
 
     <artifactId>big-data-es-base</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-client</artifactId>
+            <version>6.2.4</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals><goal>shade</goal></goals>
+                        <configuration>
+                            <relocations>
+                                <relocation>
+                                    <pattern>org.apache.http</pattern>
+                                    <shadedPattern>hidden.org.apache.http</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.apache.logging</pattern>
+                                    <shadedPattern>hidden.org.apache.logging</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.apache.commons.codec</pattern>
+                                    <shadedPattern>hidden.org.apache.commons.codec</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.apache.commons.logging</pattern>
+                                    <shadedPattern>hidden.org.apache.commons.logging</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>
